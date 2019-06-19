@@ -23,14 +23,17 @@ var GOPATH string
 var COREPATH string
 
 func init() {
+
 	common.RegisterPlugin(descCmd)
 
 	GOPATH = os.Getenv("GOPATH")
 
-	err := exec.Command("go", "get", "github.com/project-flogo/core@v0.9.0").Run()
-	if err != nil {
-		fmt.Println("Error determinig version of core")
-		os.Exit(1)
+	if _, err := os.Stat(filepath.Join(GOPATH, "pkg", "mod", "github.com", "project-flogo", "core@v0.9.0", "examples")); os.IsNotExist(err) {
+		os.Setenv("GO111MODULE", "on")
+		err = exec.Command("go", "get", "github.com/project-flogo/core@v0.9.0").Run()
+		if err != nil {
+			fmt.Printf("Error in getting 0.9.0 version of the core %v \n", err)
+		}
 	}
 	COREPATH = filepath.Join(GOPATH, "pkg", "mod", "github.com", "project-flogo", "core@v0.9.0", "examples")
 }

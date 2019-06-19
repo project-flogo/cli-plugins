@@ -24,19 +24,19 @@ var syncMetadata = &cobra.Command{
 		pwd, err := os.Getwd()
 
 		if err != nil {
-			fmt.Errorf("Error in getting  current dir")
+			fmt.Printf("Error in getting  current dir %v\n", err)
 			os.Exit(1)
 		}
 
 		if _, err = os.Stat(filepath.Join(pwd, "metadata.go")); os.IsNotExist(err) {
-			fmt.Errorf("Metadata file not present")
+			fmt.Printf("Error in getting metadata file %v \n", err)
 			os.Exit(1)
 		}
 
 		err = createDescriptorJSON(filepath.Join(pwd, "metadata.go"))
 
 		if err != nil {
-			fmt.Errorf("Error in creating file")
+			fmt.Printf("Error in getting descriptor file %v \n", err)
 			os.Exit(1)
 		}
 
