@@ -1,4 +1,4 @@
-package flogodevtool
+package devtool
 
 import (
 	"fmt"
@@ -8,21 +8,20 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var genAction = &cobra.Command{
-	Use:   "gen-action",
+var genTrigger = &cobra.Command{
+	Use:   "gen-trigger",
 	Short: "Generate activity scaffold",
 	Long:  `This subcommand helps you generate activity-scaffold`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		var actionContrib string
+		var triggerContrib string
 
 		if len(args) < 1 {
-			actionContrib = "action"
+			triggerContrib = "trigger"
 		} else {
-			actionContrib = args[0]
+			triggerContrib = args[0]
 		}
-
-		err := os.Mkdir(actionContrib, os.ModePerm)
+		err := os.Mkdir(triggerContrib, os.ModePerm)
 
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Error creating dir: %v\n", err)
@@ -35,12 +34,11 @@ var genAction = &cobra.Command{
 			fmt.Fprintf(os.Stderr, "Error getting current dir: %v\n", err)
 			os.Exit(1)
 		}
-
-		err = copyFiles(filepath.Join(COREPATH, "action"), filepath.Join(pwd, actionContrib))
+		err = copyFiles(filepath.Join(COREPATH, "trigger"), filepath.Join(pwd, triggerContrib))
 
 	},
 }
 
 func init() {
-	descCmd.AddCommand(genAction)
+	descCmd.AddCommand(genTrigger)
 }
