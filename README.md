@@ -9,7 +9,7 @@ Flogo ClI version v0.9.0 or above
 To install this plugin 
 
 ```
-flogo plugin install github.com/project-flogo/cli-plugins/flogodevtool
+flogo plugin install github.com/project-flogo/cli-plugins/devtool
 ```
 
 ##Usage
