@@ -1,4 +1,4 @@
-module github.com/project-flogo/cli-plugins/flogodevtool
+module github.com/project-flogo/cli-plugins/devtool
 
 go 1.12
 
