@@ -3,12 +3,10 @@ package commands
 import (
 	"fmt"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 
 	"github.com/project-flogo/cli/api"
-	"github.com/project-flogo/cli/util"
 	"github.com/spf13/cobra"
 )
 
@@ -18,10 +16,9 @@ var goPath = os.Getenv("GOPATH")
 var examplePath = filepath.Join("github.com", "project-flogo", "cli-plugins", "examples", "app")
 
 var CreateCmd = &cobra.Command{
-	Use:              "create",
-	Short:            "Create Command ",
-	Long:             `This command helps you to work flogo contributions `,
-	PersistentPreRun: func(cmd *cobra.Command, args []string) {},
+	Use:   "create",
+	Short: "Create Command ",
+	Long:  `This command helps you to work flogo contributions `,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
 			appName = args[0]
@@ -38,12 +35,6 @@ var CreateCmd = &cobra.Command{
 
 		if !strings.HasPrefix(appName, "http") {
 			//Install the example dir in GOPATH/src
-
-			err := util.ExecCmd(exec.Command("go", "get", "github.com/project-flogo/cli-plugins/examples"), currentDir)
-			if err != nil {
-				fmt.Fprintf(os.Stderr, "Error installing examples directory %v", err)
-				os.Exit(1)
-			}
 
 			flogoJsonPath = filepath.Join(goPath, "src", examplePath, appName+".json")
 
