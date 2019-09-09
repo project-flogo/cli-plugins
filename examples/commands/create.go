@@ -13,7 +13,7 @@ import (
 var appName string
 var flogoJsonPath string
 var goPath = os.Getenv("GOPATH")
-var examplePath = filepath.Join("github.com", "project-flogo", "cli-plugins", "examples", "app")
+var examplePath = filepath.Join("github.com", "project-flogo", "examples")
 
 var CreateCmd = &cobra.Command{
 	Use:   "create",
