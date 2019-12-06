@@ -17,6 +17,7 @@ func init() {
 
 const (
 	fJsonFile = "flogo.json"
+	corePath  = "github.com/project-flogo/master"
 )
 
 var updateMaster = &cobra.Command{
@@ -40,6 +41,13 @@ var updateMaster = &cobra.Command{
 				fmt.Fprintf(os.Stderr, "Error updating contribution/dependency: %v\n", err)
 				os.Exit(1)
 			}
+		}
+
+		err = api.UpdatePkg(project, corePath+"@master")
+
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error updating contribution/dependency: %v\n", err)
+			os.Exit(1)
 		}
 	},
 }
