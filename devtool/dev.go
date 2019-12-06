@@ -12,11 +12,11 @@ import (
 )
 
 var descCmd = &cobra.Command{
-	Use:              "dev",
-	Short:            "Developer tool for basic work ",
-	Long:             `This command helps you to work flogo contributions `,
-	PersistentPreRun: func(cmd *cobra.Command, args []string) {},
+	Use:   "dev",
+	Short: "Developer tool for basic work ",
+	Long:  `This command helps you to work flogo contributions `,
 	Run: func(cmd *cobra.Command, args []string) {
+
 	},
 }
 var GOPATH string

@@ -17,9 +17,10 @@ import (
 )
 
 var syncMetadata = &cobra.Command{
-	Use:   "sync-metadata",
-	Short: "sync descriptor json and metadata",
-	Long:  `This subcommand creates descriptor json from metadata`,
+	Use:              "sync-metadata",
+	Short:            "sync descriptor json and metadata",
+	Long:             `This subcommand creates descriptor json from metadata`,
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {},
 	Run: func(cmd *cobra.Command, args []string) {
 		pwd, err := os.Getwd()
 
