@@ -9,10 +9,10 @@ import (
 )
 
 var genTrigger = &cobra.Command{
-	Use:   "gen-trigger",
-	Short: "Generate activity scaffold",
-	Long:  `This subcommand helps you generate activity-scaffold`,
-
+	Use:              "gen-trigger",
+	Short:            "Generate activity scaffold",
+	Long:             `This subcommand helps you generate activity-scaffold`,
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {},
 	Run: func(cmd *cobra.Command, args []string) {
 		var triggerContrib string
 

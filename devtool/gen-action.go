@@ -9,11 +9,12 @@ import (
 )
 
 var genAction = &cobra.Command{
-	Use:   "gen-action",
-	Short: "Generate activity scaffold",
-	Long:  `This subcommand helps you generate activity-scaffold`,
-
+	Use:              "gen-action",
+	Short:            "Generate activity scaffold",
+	Long:             `This subcommand helps you generate activity-scaffold`,
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {},
 	Run: func(cmd *cobra.Command, args []string) {
+
 		var actionContrib string
 
 		if len(args) < 1 {
